@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	serv_addr.sin_addr.s_addr=inet_addr(argv[1]);
 	serv_addr.sin_port=htons(atoi(argv[2]));
 	
-	fd = open("data.c", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 
 	if(connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr))==-1)
 		error_handling("connect() error!");
@@ -55,7 +55,6 @@ int main(int argc, char **argv)
 			error_handling("read() error!");
 	} while(1);
 
-	printf("Message from server : %s \n", message);
 	close(fd);
 	close(sock);
 	return 0;
